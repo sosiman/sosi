@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Fundamentos sobre Cloud - AWS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="aws-logo">
+                <svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="80" fill="#232f3e"/>
+                    <text x="60" y="35" text-anchor="middle" fill="#ff9900" font-size="20" font-weight="bold">AWS</text>
+                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="12">Amazon Web Services</text>
+                </svg>
+            </div>
+            <h1>Tema 2: Fundamentos sobre Cloud</h1>
+            <p class="author">Beatriz Magán Pinto</p>
+        </div>
+
+        <!-- Sección 1: Infraestructura Global -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h2>🌍 Infraestructura Global y Fiabilidad</h2>
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="content-section">
+                        <h3>Selección de Región Adecuada</h3>
+                        <p>La elección de la región adecuada para los servicios, datos y aplicaciones de una empresa es crucial. Los factores principales a considerar incluyen:</p>
+                        <ul>
+                            <li><strong>Conformidad con requisitos legales y de gestión de datos:</strong> Algunas regulaciones requieren que los datos permanezcan en jurisdicciones específicas</li>
+                            <li><strong>Proximidad a los clientes:</strong> Reduce la latencia y mejora la experiencia del usuario</li>
+                            <li><strong>Servicios disponibles dentro de una región:</strong> No todos los servicios AWS están disponibles en todas las regiones</li>
+                            <li><strong>Precios:</strong> Los costos pueden variar significativamente entre regiones</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Zonas de Disponibilidad</h3>
+                        <p>Una zona de disponibilidad es un centro de datos único o un grupo de centros de datos dentro de una región.</p>
+                        <div class="highlight">
+                            <strong>Características clave:</strong>
+                            <ul>
+                                <li>Ubicadas a <strong>decenas de kilómetros</strong> de distancia entre sí</li>
+                                <li>Suficientemente cerca para tener <strong>baja latencia</strong></li>
+                                <li>Suficientemente separadas para <strong>reducir el riesgo</strong> de desastres múltiples</li>
+                                <li>Conectadas por enlaces de red de alta velocidad</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Ubicaciones Perimetrales (Edge Locations)</h3>
+                        <p>Una ubicación perimetral es un sitio que <strong>Amazon CloudFront</strong> utiliza para almacenar copias en caché de tu contenido más cerca de tus clientes para una entrega más rápida.</p>
+                        <ul>
+                            <li>Reduce la latencia al servir contenido desde ubicaciones cercanas</li>
+                            <li>Mejora la experiencia del usuario final</li>
+                            <li>Distribuye la carga de trabajo globalmente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 2: Aprovisionamiento de Recursos -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h2>⚙️ Aprovisionamiento de Recursos AWS</h2>
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="content-section">
+                        <h3>AWS Management Console</h3>
+                        <p>Interfaz basada en la web para acceder y administrar los servicios de AWS.</p>
+                        <div class="highlight">
+                            <strong>Características principales:</strong>
+                            <ul>
+                                <li>Acceso rápido a servicios utilizados recientemente</li>
+                                <li>Búsqueda de servicios por nombre, palabra clave o acrónimo</li>
+                                <li>Asistentes y flujos de trabajo automatizados</li>
+                                <li>Aplicación móvil disponible para monitoreo</li>
+                                <li>Soporte para múltiples identidades simultáneas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>AWS Command Line Interface (CLI)</h3>
+                        <p>Herramienta que permite controlar varios servicios de AWS directamente desde la línea de comando.</p>
+                        <ul>
+                            <li><strong>Multiplataforma:</strong> Disponible para Windows, macOS y Linux</li>
+                            <li><strong>Automatización:</strong> Permite automatizar acciones mediante scripts</li>
+                            <li><strong>Eficiencia:</strong> Ahorra tiempo en peticiones de API repetitivas</li>
+                            <li><strong>Ejemplos:</strong> Lanzar instancias EC2, configurar Auto Scaling</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Kits de Desarrollo de Software (SDK)</h3>
+                        <p>Los SDK facilitan el uso de servicios AWS a través de APIs diseñadas para lenguajes específicos.</p>
+                        <ul>
+                            <li><strong>Lenguajes soportados:</strong> C++, Java, .NET, Python, JavaScript, PHP, Ruby</li>
+                            <li><strong>Integración:</strong> Permite usar servicios AWS con aplicaciones existentes</li>
+                            <li><strong>Documentación:</strong> Incluye documentación completa y código de muestra</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>AWS Elastic Beanstalk</h3>
+                        <p>Servicio que simplifica el despliegue de aplicaciones. El usuario proporciona código y configuración, y Elastic Beanstalk se encarga de:</p>
+                        <ul>
+                            <li><strong>Ajuste de capacidad:</strong> Gestiona automáticamente los recursos</li>
+                            <li><strong>Equilibrio de carga:</strong> Distribuye el tráfico entre instancias</li>
+                            <li><strong>Escalado automático:</strong> Ajusta recursos según la demanda</li>
+                            <li><strong>Seguimiento del estado:</strong> Monitorea la salud de aplicaciones</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>AWS CloudFormation</h3>
+                        <p>Permite tratar la infraestructura como código, creando entornos mediante plantillas.</p>
+                        <div class="highlight">
+                            <strong>Beneficios clave:</strong>
+                            <ul>
+                                <li><strong>Infraestructura como código:</strong> Define recursos usando JSON o YAML</li>
+                                <li><strong>Aprovisionamiento repetible:</strong> Garantiza consistencia</li>
+                                <li><strong>Sin intervención manual:</strong> Elimina scripts personalizados</li>
+                                <li><strong>Rollback automático:</strong> Deshace cambios si detecta errores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 3: Conectividad -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h2>🔗 Conectividad con AWS</h2>
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="content-section">
+                        <h3>Amazon Virtual Private Cloud (VPC)</h3>
+                        <p>Servicio de redes que permite establecer límites seguros alrededor de los recursos de AWS.</p>
+                        <ul>
+                            <li><strong>Sección aislada:</strong> Proporciona una porción aislada de la nube AWS</li>
+                            <li><strong>Red virtual definida:</strong> Control completo sobre el entorno de red</li>
+                            <li><strong>Organización en subredes:</strong> Agrupa recursos según necesidades</li>
+                            <li><strong>Comunicación interna:</strong> Las subredes pueden comunicarse entre sí</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Puertas de Enlace</h3>
+                        <h4>Puerta de Enlace de Internet</h4>
+                        <p>Conexión entre una VPC e Internet para permitir tráfico público. Sin una puerta de enlace de Internet, nadie puede acceder a los recursos de la VPC.</p>
+                        
+                        <h4>Puerta de Enlace Privada Virtual</h4>
+                        <p>Permite establecer una conexión VPN entre la VPC y una red privada, como un centro de datos en las instalaciones.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>AWS Direct Connect</h3>
+                        <p>Establece una conexión privada dedicada entre un centro de datos y una VPC.</p>
+                        <ul>
+                            <li>Reduce costes de red</li>
+                            <li>Aumenta el ancho de banda</li>
+                            <li>Conexión más estable y predecible</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Subredes y Control de Acceso</h3>
+                        <p><strong>Subredes:</strong> Secciones de una VPC para agrupar recursos.</p>
+                        <ul>
+                            <li><strong>Públicas:</strong> Recursos accesibles al público (sitios web)</li>
+                            <li><strong>Privadas:</strong> Recursos solo accesibles internamente (bases de datos)</li>
+                        </ul>
+
+                        <h4>Listas de Control de Acceso (ACL)</h4>
+                        <ul>
+                            <li>Firewall virtual a nivel de subred</li>
+                            <li>Filtrado sin estado (no recuerdan peticiones anteriores)</li>
+                            <li>ACL predeterminada permite todo el tráfico</li>
+                            <li>ACL personalizadas deniegan todo por defecto</li>
+                        </ul>
+
+                        <h4>Grupos de Seguridad</h4>
+                        <ul>
+                            <li>Firewall virtual a nivel de instancia EC2</li>
+                            <li>Filtrado con estado (recuerdan peticiones anteriores)</li>
+                            <li>Deniega todo el tráfico entrante por defecto</li>
+                            <li>Permite todo el tráfico saliente por defecto</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Amazon Route 53</h3>
+                        <p>Servicio web DNS que conecta peticiones de usuarios a infraestructura AWS.</p>
+                        <ul>
+                            <li>Resolución DNS confiable (traduce nombres de dominio a direcciones IP)</li>
+                            <li>Gestión de registros DNS</li>
+                            <li>Registro de nuevos dominios</li>
+                            <li>Integración con CloudFront</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 4: Almacenamiento -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h2>💾 Servicios de Almacenamiento</h2>
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="content-section">
+                        <h3>Almacenes de Instancias y Amazon EBS</h3>
+                        <h4>Almacén de Instancias</h4>
+                        <ul>
+                            <li>Almacenamiento temporal a nivel de bloque</li>
+                            <li>Conectado físicamente al equipo de alojamiento</li>
+                            <li>Misma vida útil que la instancia</li>
+                            <li><strong>Importante:</strong> Se pierden los datos al terminar la instancia</li>
+                        </ul>
+
+                        <h4>Amazon Elastic Block Store (EBS)</h4>
+                        <ul>
+                            <li>Volúmenes de almacenamiento persistentes</li>
+                            <li>Los datos permanecen disponibles aunque se detenga la instancia</li>
+                            <li>Se puede adjuntar a instancias EC2</li>
+                            <li>Permite crear instantáneas para copias de seguridad</li>
+                        </ul>
+
+                        <h4>Instantáneas de EBS</h4>
+                        <p>Copia de seguridad progresiva:</p>
+                        <ul>
+                            <li><strong>Primera copia:</strong> Copia todos los datos</li>
+                            <li><strong>Copias posteriores:</strong> Solo los bloques que han cambiado</li>
+                            <li>Más eficiente que las copias completas</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Amazon Simple Storage Service (S3)</h3>
+                        <h4>Almacenamiento de Objetos</h4>
+                        <p>Cada objeto consta de:</p>
+                        <ul>
+                            <li><strong>Datos:</strong> Imagen, vídeo, documento o cualquier archivo</li>
+                            <li><strong>Metadatos:</strong> Información sobre los datos</li>
+                            <li><strong>Clave:</strong> Identificador único del objeto</li>
+                        </ul>
+
+                        <h4>Características de Amazon S3</h4>
+                        <ul>
+                            <li>Almacena datos como objetos en buckets</li>
+                            <li>Control de permisos para visibilidad y acceso</li>
+                            <li>Control de versiones para seguimiento de cambios</li>
+                            <li>Al modificar un archivo, se actualiza todo el objeto</li>
+                        </ul>
+
+                        <h4>Tipos de Almacenamiento S3</h4>
+                        <ul>
+                            <li><strong>S3 Standard:</strong> Acceso frecuente</li>
+                            <li><strong>S3 Standard-Infrequent Access:</strong> Acceso poco frecuente</li>
+                            <li><strong>S3 One Zone-Infrequent Access:</strong> Una sola zona</li>
+                            <li><strong>S3 Intelligent-Tiering:</strong> Optimización automática</li>
+                            <li><strong>S3 Glacier:</strong> Archivado a largo plazo</li>
+                            <li><strong>S3 Glacier Deep Archive:</strong> Archivado más económico</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Amazon Elastic File System (EFS)</h3>
+                        <h4>Almacenamiento de Archivos</h4>
+                        <p>Múltiples clientes pueden acceder a datos almacenados en carpetas compartidas.</p>
+                        <ul>
+                            <li>Sistema de archivos escalable</li>
+                            <li>Se utiliza con servicios AWS y recursos en las instalaciones</li>
+                            <li>Aumenta y se reduce automáticamente</li>
+                            <li>Ideal cuando múltiples servicios necesitan acceder a los mismos datos</li>
+                        </ul>
+
+                        <h4>Comparación EBS vs EFS</h4>
+                        <div class="highlight">
+                            <strong>Amazon EBS:</strong>
+                            <ul>
+                                <li>Almacena datos en una única zona de disponibilidad</li>
+                                <li>Debe estar en la misma zona que la instancia EC2</li>
+                            </ul>
+                            <strong>Amazon EFS:</strong>
+                            <ul>
+                                <li>Servicio regional</li>
+                                <li>Almacena datos en múltiples zonas de disponibilidad</li>
+                                <li>Acceso simultáneo desde todas las zonas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 5: Bases de Datos -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h2>🗄️ Servicios de Bases de Datos</h2>
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="content-section">
+                        <h3>Amazon Relational Database Service (RDS)</h3>
+                        <p>Servicio que permite operar bases de datos relacionales en la nube de AWS.</p>
+                        <ul>
+                            <li>Servicio administrado que automatiza tareas</li>
+                            <li>Aprovisionamiento de hardware automático</li>
+                            <li>Configuración, parches y copias de seguridad automáticas</li>
+                            <li>Integración con otros servicios AWS</li>
+                            <li>Cifrado en reposo y en tránsito</li>
+                        </ul>
+
+                        <h4>Motores de Base de Datos RDS</h4>
+                        <ul>
+                            <li>Amazon Aurora</li>
+                            <li>PostgreSQL</li>
+                            <li>MySQL</li>
+                            <li>MariaDB</li>
+                            <li>Oracle Database</li>
+                            <li>Microsoft SQL Server</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Amazon Aurora</h3>
+                        <p>Base de datos relacional de clase empresarial.</p>
+                        <ul>
+                            <li>Compatible con MySQL y PostgreSQL</li>
+                            <li>Reduce costes de base de datos</li>
+                            <li>Reduce operaciones innecesarias de E/S</li>
+                            <li>Recursos fiables y disponibles</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Amazon DynamoDB</h3>
+                        <p>Servicio de base de datos de valor de clave sin servidor.</p>
+                        <div class="highlight">
+                            <strong>Características:</strong>
+                            <ul>
+                                <li><strong>Sin servidor:</strong> No requiere aprovisionar ni administrar servidores</li>
+                                <li><strong>Escalado automático:</strong> Se ajusta automáticamente a los cambios</li>
+                                <li><strong>Rendimiento:</strong> Milisegundos de un dígito a cualquier escala</li>
+                                <li><strong>Flexibilidad:</strong> Se pueden añadir/eliminar atributos en cualquier momento</li>
+                            </ul>
+                        </div>
+
+                        <h4>Bases de Datos No Relacionales</h4>
+                        <p>Utilizan pares de valor de clave:</p>
+                        <ul>
+                            <li><strong>Elementos (claves):</strong> Organizan los datos</li>
+                            <li><strong>Atributos (valores):</strong> Características de los datos</li>
+                            <li>No todos los elementos necesitan los mismos atributos</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>Servicios Adicionales de Bases de Datos</h3>
+                        <ul>
+                            <li><strong>Amazon Redshift:</strong> Data warehousing para análisis de big data</li>
+                            <li><strong>AWS Database Migration Service (DMS):</strong> Migración de bases de datos</li>
+                            <li><strong>Amazon DocumentDB:</strong> Base de datos de documentos</li>
+                            <li><strong>Amazon Neptune:</strong> Base de datos de grafos</li>
+                            <li><strong>Amazon QLDB:</strong> Base de datos de libro mayor</li>
+                            <li><strong>Amazon Managed Blockchain:</strong> Blockchain administrado</li>
+                            <li><strong>Amazon ElastiCache:</strong> Caché en memoria</li>
+                            <li><strong>DynamoDB Accelerator:</strong> Acelerador para DynamoDB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cuestionario -->
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>📝 Cuestionario de Autoevaluación</h2>
+                <p>Responde las siguientes preguntas para evaluar tu comprensión del tema</p>
+            </div>
+            
+            <form id="quiz-form">
+                <!-- Las preguntas se generarán con JavaScript -->
+            </form>
+            
+            <div class="quiz-buttons">
+                <button type="button" class="btn" onclick="submitQuiz()">Evaluar Respuestas</button>
+                <button type="button" class="btn" onclick="resetQuiz()">Reiniciar Cuestionario</button>
+            </div>
+            
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
