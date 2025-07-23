@@ -1,0 +1,2 @@
+# sosi
+paginas deploy
